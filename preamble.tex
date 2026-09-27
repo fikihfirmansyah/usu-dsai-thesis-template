@@ -81,11 +81,14 @@
 % Two centered bold lines: "BAB <n>" then "<JUDUL BAB>" (uppercase),
 % with 2-line spacing between them and 4-line spacing before the first
 % sub-heading, as illustrated in Lampiran 3 of the Pedoman.
+% NB: no \Large/\large here -- Subbab 1.4.1 of the Pedoman requires
+% Times New Roman 12pt for the ENTIRE naskah with no stated exception
+% for headings; only bold + centered + uppercase distinguish a BAB title.
 \titleformat{\chapter}[display]
   {\normalfont\bfseries\centering}
-  {\Large BAB \thechapter}
+  {BAB \thechapter}
   {12pt}
-  {\Large\MakeUppercase}
+  {\MakeUppercase}
 % "before" length below (20mm) extends the 30mm body top margin to the
 % required 50mm on chapter-opening pages; "after" (28pt) leaves roughly
 % 4 line-spacings before the first sub-heading, per Lampiran 3.
@@ -98,7 +101,7 @@
   {\normalfont\bfseries\centering}
   {}
   {0pt}
-  {\Large\MakeUppercase}
+  {\MakeUppercase}
 \titlespacing*{name=\chapter,numberless}{0pt}{0pt}{28pt}
 
 % --- Section = sub-bab level 1 -------------------------------------------
@@ -155,14 +158,20 @@
 \widowpenalty = 10000
 \displaywidowpenalty = 10000
 
-% ---- Table of contents depth: show up to subsection ----------------------
+% ---- Table of contents depth: sub-bab level 2 (subsection) is the
+% maximum level the Pedoman recommends numbering (Subbab 1.4.5).
 \setcounter{tocdepth}{2}
-\setcounter{secnumdepth}{3}
+\setcounter{secnumdepth}{2}
 
-% ---- Faculty logo (50 x 50 mm, per Lampiran 1/4) --------------------------
-% If figures/logo_usu.png is ever missing/renamed, swap this back to the
-% \fbox placeholder below so the template still compiles.
+% ---- Faculty logo ---------------------------------------------------------
+% NB: Subbab 1.2.5 of the Pedoman specifies 50 x 50 mm for this logo.
+% Sized smaller here on request; change \ThesisLogoSize back to 50mm to
+% match the Pedoman exactly if strict compliance is required.
+% If figures/logo_usu.png is ever missing/renamed, swap \ThesisLogo's body
+% for the \fbox placeholder below so the template still compiles.
+\newlength{\ThesisLogoSize}
+\setlength{\ThesisLogoSize}{35mm}
 \newcommand{\ThesisLogo}{%
-  \includegraphics[width=50mm,height=50mm,keepaspectratio]{figures/logo_usu.png}%
-  % \fbox{\parbox[c][50mm][c]{50mm}{\centering\footnotesize LOGO\\FAKULTAS ILMU KOMPUTER\\DAN TEKNOLOGI INFORMASI\\USU}}%
+  \includegraphics[width=\ThesisLogoSize,height=\ThesisLogoSize,keepaspectratio]{figures/logo_usu.png}%
+  % \fbox{\parbox[c][\ThesisLogoSize][c]{\ThesisLogoSize}{\centering\footnotesize LOGO\\FAKULTAS ILMU KOMPUTER\\DAN TEKNOLOGI INFORMASI\\USU}}%
 }

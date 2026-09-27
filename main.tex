@@ -7,7 +7,8 @@
 % Based on "Pedoman Penulisan Tesis" Fasilkom-TI USU
 % and the "Overleaf Online LaTeX Editor untuk Penulisan Tesis" guide.
 % =============================================================
-\documentclass[12pt,a4paper]{report}
+% oneside: naskah dicetak satu muka saja (Subbab 1.5.1 Pedoman)
+\documentclass[12pt,a4paper,oneside]{report}
 \input{preamble.tex}
 
 \begin{document}
@@ -53,9 +54,9 @@
 % Appendix chapters are labelled "LAMPIRAN A", "LAMPIRAN B", ... instead of "BAB".
 \titleformat{\chapter}[display]
   {\normalfont\bfseries\centering}
-  {\Large LAMPIRAN \thechapter}
+  {LAMPIRAN \thechapter}
   {12pt}
-  {\Large\MakeUppercase}
+  {\MakeUppercase}
 \input{appendix/lampiranA_kode_program}
 \input{appendix/lampiranB_data_tambahan}
 

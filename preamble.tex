@@ -84,15 +84,22 @@
 % NB: no \Large/\large here -- Subbab 1.4.1 of the Pedoman requires
 % Times New Roman 12pt for the ENTIRE naskah with no stated exception
 % for headings; only bold + centered + uppercase distinguish a BAB title.
+% The \vspace* below (not titlesec's "before" length -- ordinary glue at
+% the very top of a page is discarded by TeX's page breaker) extends the
+% 30mm body top margin to the required 50mm on chapter-opening pages.
+% 12.5mm, not 20mm, because the display-shape heading itself already
+% consumes ~7.5mm before the first glyph; calibrated by rendering a
+% chapter page at known DPI and measuring the pixel offset to "BAB 1" --
+% verify again if titlesec's version or the display-shape implementation
+% ever changes.
 \titleformat{\chapter}[display]
   {\normalfont\bfseries\centering}
-  {BAB \thechapter}
+  {\vspace*{12.5mm}BAB \thechapter}
   {12pt}
   {\MakeUppercase}
-% "before" length below (20mm) extends the 30mm body top margin to the
-% required 50mm on chapter-opening pages; "after" (28pt) leaves roughly
-% 4 line-spacings before the first sub-heading, per Lampiran 3.
-\titlespacing*{\chapter}{0pt}{20mm}{28pt}
+% "after" (28pt) leaves roughly 4 line-spacings before the first
+% sub-heading, per Lampiran 3.
+\titlespacing*{\chapter}{0pt}{0pt}{28pt}
 
 % Unnumbered chapters (\chapter*, used internally by \tableofcontents,
 % \listoffigures, \listoftables and \bibliography) keep the normal 30mm

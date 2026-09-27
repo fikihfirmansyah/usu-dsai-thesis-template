@@ -1,0 +1,47 @@
+% =============================================================
+% Kulit Depan (outer cover), based on Lampiran 1 of the Pedoman.
+% All text: Times New Roman 14pt, uppercase, black, centered.
+% Top/bottom margin on the cover: 60 mm from the paper edge.
+% =============================================================
+% NB: intentionally not using the \titlepage environment here -- it
+% resets \c@page to 1 on every use, which would collide with the
+% roman-numbered title page that follows. \clearpage + \thispagestyle{empty}
+% gives the same unnumbered full page without touching the counter.
+\clearpage
+\thispagestyle{empty}
+% The 60mm figures below are measured from the physical paper edge
+% (per Lampiran 1), not from the 30mm body margin, so this page
+% temporarily uses a zero margin while it is being typeset.
+\newgeometry{margin=0mm}
+\begin{center}
+\vspace*{60mm minus 10mm}
+
+{\fontsize{14}{18}\selectfont\bfseries JUDUL TESIS UNTUK PROGRAM MAGISTER (S2)\\
+DATA SCIENCE DAN KECERDASAN BUATAN\par}
+
+\vspace{20mm}
+
+{\fontsize{14}{18}\selectfont\bfseries TESIS\par}
+
+\vspace{20mm}
+
+{\fontsize{14}{18}\selectfont\bfseries NAMA MAHASISWA\\
+NIM 000000000\par}
+
+\vfill
+
+\ThesisLogo
+
+\vfill
+
+{\fontsize{14}{18}\selectfont\bfseries
+PROGRAM STUDI S2 DATA SCIENCE DAN KECERDASAN BUATAN\\
+FAKULTAS ILMU KOMPUTER DAN TEKNOLOGI INFORMASI\\
+UNIVERSITAS SUMATERA UTARA\\
+MEDAN\\
+\the\year\par}
+
+\vspace*{60mm minus 10mm}
+\end{center}
+\restoregeometry
+\clearpage

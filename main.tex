@@ -1,0 +1,62 @@
+% =============================================================
+% main.tex
+% Thesis template - Program Studi S2 Data Science dan Kecerdasan Buatan
+% Fakultas Ilmu Komputer dan Teknologi Informasi (Fasilkom-TI)
+% Universitas Sumatera Utara (USU)
+%
+% Based on "Pedoman Penulisan Tesis" Fasilkom-TI USU
+% and the "Overleaf Online LaTeX Editor untuk Penulisan Tesis" guide.
+% =============================================================
+\documentclass[12pt,a4paper]{report}
+\input{preamble.tex}
+
+\begin{document}
+
+% ---------------------------------------------------------------
+% BAGIAN MUKA (front matter) -- roman page numbers, counted from
+% the title page even though most of these pages print no number.
+% ---------------------------------------------------------------
+\pagenumbering{roman}
+\input{frontmatter/cover}
+\input{frontmatter/titlepage}
+\input{frontmatter/approval}
+\input{frontmatter/originality}
+\input{frontmatter/publication}
+\input{frontmatter/committee}
+\input{frontmatter/cv}
+\input{frontmatter/acknowledgements}
+\input{frontmatter/abstract_id}
+\input{frontmatter/abstract_en}
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+% ---------------------------------------------------------------
+% BAGIAN TUBUH (body) -- arabic page numbers from BAB 1 onward.
+% ---------------------------------------------------------------
+\pagenumbering{arabic}
+\input{chapters/bab1_pendahuluan}
+\input{chapters/bab2_tinjauan_pustaka}
+\input{chapters/bab3_metodologi}
+\input{chapters/bab4_hasil_pembahasan}
+\input{chapters/bab5_kesimpulan_saran}
+
+% ---------------------------------------------------------------
+% BAGIAN BELAKANG (back matter) -- numbering continues from the body.
+% ---------------------------------------------------------------
+{\singlespacing
+\bibliography{references}
+}
+
+\appendix
+% Appendix chapters are labelled "LAMPIRAN A", "LAMPIRAN B", ... instead of "BAB".
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\centering}
+  {\Large LAMPIRAN \thechapter}
+  {12pt}
+  {\Large\MakeUppercase}
+\input{appendix/lampiranA_kode_program}
+\input{appendix/lampiranB_data_tambahan}
+
+\end{document}

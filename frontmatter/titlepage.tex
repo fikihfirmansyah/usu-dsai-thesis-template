@@ -1,0 +1,48 @@
+% =============================================================
+% Halaman Judul (title page), based on Lampiran 4 of the Pedoman.
+% Identical to the cover, plus the "diajukan untuk..." purpose line.
+% =============================================================
+% See the note in cover.tex: the \titlepage environment is avoided
+% because it resets \c@page, which must stay on the roman sequence here.
+\clearpage
+\thispagestyle{empty}
+% See the note in cover.tex: 60mm here is measured from the paper edge.
+\newgeometry{margin=0mm}
+\begin{center}
+\vspace*{60mm minus 10mm}
+
+{\fontsize{14}{18}\selectfont\bfseries JUDUL TESIS UNTUK PROGRAM MAGISTER (S2)\\
+DATA SCIENCE DAN KECERDASAN BUATAN\par}
+
+\vspace{14mm}
+
+{\fontsize{14}{18}\selectfont\bfseries TESIS\par}
+
+\vspace{6mm}
+
+{\fontsize{12}{16}\selectfont
+Diajukan untuk melengkapi tugas dan memenuhi syarat memperoleh ijazah\\
+Magister Data Science dan Kecerdasan Buatan\par}
+
+\vspace{14mm}
+
+{\fontsize{14}{18}\selectfont\bfseries NAMA MAHASISWA\\
+NIM 000000000\par}
+
+\vfill
+
+\ThesisLogo
+
+\vfill
+
+{\fontsize{14}{18}\selectfont\bfseries
+PROGRAM STUDI S2 DATA SCIENCE DAN KECERDASAN BUATAN\\
+FAKULTAS ILMU KOMPUTER DAN TEKNOLOGI INFORMASI\\
+UNIVERSITAS SUMATERA UTARA\\
+MEDAN\\
+\the\year\par}
+
+\vspace*{60mm minus 10mm}
+\end{center}
+\restoregeometry
+\clearpage

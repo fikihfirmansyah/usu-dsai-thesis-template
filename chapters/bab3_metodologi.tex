@@ -1,0 +1,31 @@
+\chapter{METODOLOGI PENELITIAN}
+
+\section{Tahapan Penelitian}
+Penelitian ini dilaksanakan melalui beberapa tahapan utama: (1) pengumpulan dan praproses data, (2) perancangan model, (3) pelatihan dan penyetelan hiperparameter, serta (4) pengujian dan evaluasi.
+
+\subsection{Kerangka kerja penelitian}
+Kerangka kerja penelitian secara umum mengikuti siklus iteratif antara perancangan model dan evaluasi hasil, hingga diperoleh konfigurasi model dengan kinerja terbaik pada data validasi.
+
+\section{Pengumpulan dan Praproses Data}
+Data yang digunakan dalam penelitian ini bersumber dari \textit{[nama/sumber dataset]}. Tahap praproses meliputi pembersihan data, penanganan nilai hilang, normalisasi fitur, dan pembagian data menjadi himpunan latih, validasi, dan uji.
+
+\section{Perancangan Model}
+Diberikan sebuah himpunan data $D = \{(x_i, y_i)\}_{i=1}^{n}$, model yang diusulkan bertujuan mempelajari fungsi $f_\theta: \mathcal{X} \rightarrow \mathcal{Y}$ yang meminimumkan fungsi kerugian (\textit{loss function}) berikut:
+\begin{equation}
+\label{eq:loss}
+\mathcal{L}(\theta) = \frac{1}{n}\sum_{i=1}^{n} \ell\big(f_\theta(x_i), y_i\big) + \lambda \lVert \theta \rVert_2^2
+\end{equation}
+dengan $\ell(\cdot,\cdot)$ adalah fungsi kerugian dasar, $\theta$ adalah parameter model, dan $\lambda$ adalah koefisien regularisasi.
+
+Parameter optimal $\theta^{*}$ diperoleh melalui optimisasi berbasis gradien sebagaimana pada Persamaan~\eqref{eq:update}:
+\begin{align}
+\label{eq:update}
+\theta^{(t+1)} &= \theta^{(t)} - \eta \, \nabla_\theta \mathcal{L}\big(\theta^{(t)}\big)
+\end{align}
+dengan $\eta$ adalah laju pembelajaran (\textit{learning rate}) dan $t$ adalah indeks iterasi.
+
+\subsection{Arsitektur model yang diusulkan}
+Jelaskan di sini arsitektur model secara rinci, termasuk lapisan/komponen penyusun, fungsi aktivasi yang digunakan, serta alasan pemilihan arsitektur tersebut dikaitkan dengan tinjauan pustaka pada Bab 2.
+
+\section{Skenario Pengujian}
+Evaluasi kinerja model dilakukan menggunakan skema validasi silang \textit{k-fold} dengan metrik evaluasi berupa \textit{[nama metrik]}. Hasil pengujian dibandingkan dengan beberapa metode \textit{baseline} sebagaimana diuraikan pada Bab 2.

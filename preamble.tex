@@ -1,0 +1,168 @@
+% =============================================================
+% preamble.tex
+% Formatting rules implementing "Pedoman Penulisan Tesis"
+% Fasilkom-TI, Universitas Sumatera Utara
+% (adapted for Program Studi S2 Data Science dan Kecerdasan Buatan)
+% =============================================================
+
+% ---- Page geometry -------------------------------------------------
+% Body pages : top 30mm, left 38mm, right 25mm, bottom 25mm
+% Chapter-opening pages need top 50mm; handled in \chapter redefinition below.
+\usepackage[a4paper,top=30mm,left=38mm,right=25mm,bottom=25mm,headsep=8mm,headheight=15pt]{geometry}
+
+% ---- Fonts -----------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}            % Times New Roman substitute (body text 12pt)
+
+% Localized names for the automatically generated lists (kept manual,
+% rather than via babel, so the template compiles on any TeX
+% distribution without requiring the Indonesian hyphenation patterns).
+\renewcommand{\contentsname}{Daftar Isi}
+\renewcommand{\listtablename}{Daftar Tabel}
+\renewcommand{\listfigurename}{Daftar Gambar}
+\renewcommand{\bibname}{Daftar Pustaka}
+\renewcommand{\appendixname}{Lampiran}
+
+% ---- Spacing -----------------------------------------------------------
+\usepackage{setspace}
+\onehalfspacing                % 1.5 line spacing for main text
+% Tables, bibliography and other lists use \singlespacing locally.
+
+% ---- Paragraphs --------------------------------------------------------
+% First paragraph after any heading is not indented (LaTeX default behaviour).
+% Subsequent paragraphs are indented 6 characters (~1.27 cm at 12pt Times).
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% ---- Useful packages ----------------------------------------------------
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+    colorlinks   = true,
+    linkcolor    = black,
+    citecolor    = black,
+    urlcolor     = blue,
+    pdftitle     = {Judul Tesis},
+    pdfauthor    = {Nama Mahasiswa},
+    pdfsubject   = {Tesis Magister Data Science dan Kecerdasan Buatan},
+}
+
+% ---- Citations: "Sistem Pengarang-Tahun" (author-year), alphabetical, hanging indent
+\usepackage[authoryear,round]{natbib}
+\bibliographystyle{apalike}
+\setlength{\bibsep}{0pt}
+\setlength{\bibhang}{1.27cm}   % hanging indent for reference list
+
+% ---- Captions: "Tabel"/"Gambar" + chapter.number, centered above table / below figure
+\usepackage{chngcntr}
+\captionsetup[table]{name=Tabel,labelsep=period,justification=centering,singlelinecheck=false}
+\captionsetup[figure]{name=Gambar,labelsep=period,justification=centering}
+\counterwithin{table}{chapter}
+\counterwithin{figure}{chapter}
+
+% =============================================================
+% Heading formatting
+% =============================================================
+\usepackage{titlesec}
+
+% --- Chapter (BAB) ------------------------------------------------------
+% Two centered bold lines: "BAB <n>" then "<JUDUL BAB>" (uppercase),
+% with 2-line spacing between them and 4-line spacing before the first
+% sub-heading, as illustrated in Lampiran 3 of the Pedoman.
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\centering}
+  {\Large BAB \thechapter}
+  {12pt}
+  {\Large\MakeUppercase}
+% "before" length below (20mm) extends the 30mm body top margin to the
+% required 50mm on chapter-opening pages; "after" (28pt) leaves roughly
+% 4 line-spacings before the first sub-heading, per Lampiran 3.
+\titlespacing*{\chapter}{0pt}{20mm}{28pt}
+
+% Unnumbered chapters (\chapter*, used internally by \tableofcontents,
+% \listoffigures, \listoftables and \bibliography) keep the normal 30mm
+% top margin -- only numbered BAB pages get the extra 20mm.
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\bfseries\centering}
+  {}
+  {0pt}
+  {\Large\MakeUppercase}
+\titlespacing*{name=\chapter,numberless}{0pt}{0pt}{28pt}
+
+% --- Section = sub-bab level 1 -------------------------------------------
+% Bold, Title Case, flush left at the chapter margin, numbered "N.M"
+\titleformat{\section}
+  {\normalfont\bfseries}
+  {\thesection}
+  {0.5em}
+  {}
+\titlespacing*{\section}{0pt}{18pt}{8pt}
+
+% --- Subsection = sub-bab level 2 ----------------------------------------
+% Italic, sentence case, numbered "N.M.K"
+\titleformat{\subsection}
+  {\normalfont\itshape}
+  {\thesubsection}
+  {0.5em}
+  {}
+\titlespacing*{\subsection}{0pt}{14pt}{6pt}
+
+% --- Subsubsection (beyond the two mandated levels; used sparingly) -------
+\titleformat{\subsubsection}
+  {\normalfont\itshape}
+  {\thesubsubsection}
+  {0.5em}
+  {}
+\titlespacing*{\subsubsection}{0pt}{12pt}{4pt}
+
+% =============================================================
+% Page numbering: Times New Roman 12pt, top-right corner,
+% 15 mm from the top edge, right-aligned 25 mm from the right edge.
+% =============================================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Chapter-opening pages ("plain" style) show no header/footer content,
+% but the page is still counted in the numbering sequence.
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% Front-matter "title-style" pages (cover, approval, originality, etc.)
+% also print no visible page number, while the roman counter keeps counting.
+\newcommand{\unnumberedpage}{\thispagestyle{empty}}
+
+% ---- Widow/orphan control (two-line minimum per the "no orphan / no widow" rule)
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+% ---- Table of contents depth: show up to subsection ----------------------
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+
+% ---- Faculty logo (50 x 50 mm, per Lampiran 1/4) --------------------------
+% If figures/logo_usu.png is ever missing/renamed, swap this back to the
+% \fbox placeholder below so the template still compiles.
+\newcommand{\ThesisLogo}{%
+  \includegraphics[width=50mm,height=50mm,keepaspectratio]{figures/logo_usu.png}%
+  % \fbox{\parbox[c][50mm][c]{50mm}{\centering\footnotesize LOGO\\FAKULTAS ILMU KOMPUTER\\DAN TEKNOLOGI INFORMASI\\USU}}%
+}
